@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<% include admin_top %>
+<div id="wrapper">
+<% include admin_menu %>
+    <div id="page-wrapper">
+
+    
+                    <!-- <div class="container" id="simpleSearchDiv">
+                        <div class="alert alert-success alert-dismissable"  style="text-align: center; width: 85%">
+                                <a href="#" class="close" data-dismiss="alert" aria-label="close">x</a>
+                                <strong>Thêm thành công!</strong> 
+                        </div>
+                    </div> -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Tạo lịch chiếu</h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">                       
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example" style="font-size: 11px">
+                                <thead>
+                                    <tr style="text-align: center; font-weight: bold;">
+                                        <td>Tên phim</td>
+                                        <td>Ảnh</td>
+                                        <td>Thời lượng</td>
+                                        <td>Đạo diễn</td>
+                                        <td>Diễn viên</td>
+                                        <td>Ngôn ngữ</td>
+                                        <td>Ngày khởi chiếu</td>
+                                        <td>Định dạng</td>
+                                        <td>Lứa tuổi</td>
+                                        <td>Thể loại</td>
+                                        <td>Thao tác</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                <% movie.forEach(function(item){%>
+                                    <tr class="odd gradeX" style="text-align: center;">
+                                        <td><input type="hidden" id="id-<%=item.idmovie%>" value="<%=item.idmovie%>">
+                                            <input type="hidden" id="name-<%=item.name%>" value="<%=item.name%>"><%=item.name%>
+                                            <input type="hidden" id="description-<%=item.idmovie%>" value="<%=item.description%>"></td>
+                                        <td><input type="hidden" id="image-<%= item.idmovie %>" value="<%= item.image %>"> <img src="<%= item.image %>" height="50px" width="50px"></td>
+                                        <td><input type="hidden" id="duration-<%=item.idmovie%>" value="<%= item.duration %>"><%= item.duration %> Phút</td>
+                                        <td><input type="hidden" id="director-<%=item.idmovie%>" value="<%= item.director %>"><%= item.director %></td>
+                                        <td><input type="hidden" id="actornactress-<%=item.idmovie%>" value="<%= item.actornactress %>"><%= item.actornactress %></td>
+                                        <td><input type="hidden" id="language-<%=item.idmovie%>" value="<%= item.language %>"><%= item.language %>
+                                            <input type="hidden" id="nation-<%=item.idmovie%>" value="<%= item.nation %>"></td>
+                                        <td><input type="hidden" id="startday-<%=item.idmovie%>" value="<%= item.startday %>"><%= item.startday %></td>
+                                        <td><input type="hidden" id="format-<%=item.idmovie%>" value="<%=item.format%>">
+                                            <%if(item.format=='1'){%>
+                                                2D
+                                            <%}else{%>
+                                                3D
+                                            <%}%>
+                                        </td>
+                                        <td><input type="hidden" id="urltrailer-<%=item.idmovie%>" value="<%= item.urltrailer %>">
+                                            <input type="hidden" id="ages-<%=item.idmovie%>" value="<%=item.ages%>">
+                                            <%if(item.ages=='1'){%>
+                                                P
+                                            <%}if(item.ages=='2'){%>
+                                                C13
+                                            <%}if(item.ages=='3'){%>
+                                                C16
+                                            <%}if(item.ages=='4'){%>
+                                                C18
+                                            <%}%>
+                                        </td>
+                                        <td><input type="hidden" id="category-<%=item.idmovie%>" value="<%=item.category%>"><%=item.category%></td>
+                                        <td>
+                                            <button class="fa fa-edit" title="Chọn phòng chiếu" onclick="return setData('<%=item.idmovie%>')" data-toggle="modal" data-target="#myModal"></button>
+                                        </td>
+
+                                    </tr>
+                                    <%});%>
+                                </tbody>
+                                <script>
+                                    function setData(id){
+                                        document.getElementById('idfilm').value=document.getElementById('id-'+id).value;
+                                    }
+                                </script>
+                            </table>
+                            <!-- /.table-responsive -->  
+                            <!-- modal -->
+                            <div class="modal fade" id="myModal" role="dialog">
+                                    <div class="modal-dialog modal-lg">
+                                        <div class="col-md-4 col-md-offset-4">
+                                            <div class="login-panel panel panel-default">
+                                                <div class="panel-heading">
+                                                    <h3 class="panel-title"><span id="food"></span></h3>
+                                                </div>
+                                                <div class="panel-body">
+                                                    <form role="form" action="/schedulesave" method="post">
+                                                        <fieldset>
+                                                        <div class="form-group">
+                                                                <label for="name" class="cols-sm-2 control-label">Thời gian chiếu:</label>
+                                                                <div class="cols-sm-10">
+                                                                <input type="hidden" name="idfilm" id="idfilm">
+                                                                <input class="form-control" type="date" name="showday" id="showday">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="name" class="cols-sm-2 control-label">Phòng chiếu:</label>
+                                                                <div class="cols-sm-10">
+                                                                    <select class="form-control" name="roomschedure" id="roomschedure">
+                                                                        <option value="1">2D-Phòng 1</option>
+                                                                        <option value="2">2D-Phòng 2</option>
+                                                                        <option value="3">3D-Phòng 1</option>
+                                                                        <option value="4">3D-Phòng 2</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="name" class="cols-sm-2 control-label">Thời gian chiếu:</label>
+                                                                <div class="cols-sm-10">
+                                                                    <select class="form-control" name="time" id="time">
+                                                                        <option value="1">09h00-11h40</option>
+                                                                        <option value="2">11h40-14h20</option>
+                                                                        <option value="3">14h20-17h00</option>
+                                                                        <option value="4">17h00-19h40</option>
+                                                                        <option value="5">19h40-21h20</option>
+                                                                        <option value="6">21h20-00h00</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <!-- Change this to a button or input when using this as a form -->
+                                                            <button type="submit" class="btn btn-lg btn-primary btn-block">OK</button>
+                                                        </fieldset>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>                      
+                                    </div>
+                                </div>                          
+                        </div>
+                        <!--/ and modal -->
+                            
+                            
+                            
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+           
+    </div>
+
+</div>
+
+<% include admin_footer %>

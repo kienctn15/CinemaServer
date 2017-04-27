@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<% include admin_top %>
+<div id="wrapper">
+<% include admin_menu %>
+    <div id="page-wrapper">
+    <center>
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Quản lý khách hàng</h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+    </center>
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">                       
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example" style="font-size: 11px">
+                                <thead>
+                                    <tr style="text-align: center; font-weight: bold;">
+                                        <td>Tên</td>
+                                        <td>Email</td>
+                                        <td>Tài Khoản</td>
+                                        <td>Ngày sinh</td>
+                                        <td>Giới tính</td>
+                                        <td>CMTND</td>
+                                        <td>DT</td>
+                                        <td>Trạng thái</td>
+                                        <td>Thao tác</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                <% data.forEach(function(item){%>
+                                    <tr class="odd gradeX" style="text-align: center;">
+                                        
+                                        <td><input type="hidden" id="id-<%=item.idcustomer%>" value="<%=item.idcustomer%>">
+                                            <input type="hidden" id="fullname-<%=item.idcustomer%>" value="<%=item.fullname%>"><%=item.fullname%></td>
+                                        <td><input type="hidden" id="email-<%=item.idcustomer%>" value="<%=item.email%>"><%=item.email%></td>
+                                        <td><input type="hidden" id="username-<%=item.username%>" value="<%=item.username%>"><%=item.username%></td>
+                                            <input type="hidden" id="password-<%=item.idcustomer%>" value="<%=item.password%>">
+                                        <td><input type="hidden" id="birthday-<%=item.idcustomer%>" value="<%=item.birthday%>"><%=item.birthday%></td>
+                                        <td><input type="hidden" id="gender-<%=item.idcustomer%>" value="<%=item.gender%>">
+                                            <%if(item.gender=='1'){%>
+                                                Nam
+                                            <%}else{%>
+                                                Nữ
+                                            <%}%>
+                                        </td>
+                                        <td><input type="hidden" id="identitycard-<%=item.idcustomer%>" value="<%=item.identitycard%>"><%=item.identitycard%></td>
+                                        <td><input type="hidden" id="phone-<%=item.idcustomer%>" value="<%=item.phone%>"><%=item.phone%></td>
+                                        <td><input type="hidden" id="status-<%=item.idcustomer%>" value="<%=item.status%>">
+                                            <%if(item.status=='1'){%>
+                                                Hoạt động
+                                            <%}if(item.status=='0'){%>
+                                                Ngừng hoạt động
+                                            <%}%>
+                                        </td>
+                                        <td>
+                                            <a href="/deleteCustomer?id=<%=item.idcustomer%>"><span class="fa fa-remove" title="Xóa" onclick="return Confirm_del()"></span></a>
+                                            <button class="fa fa-edit" title="Cập nhật thông tin" onclick="return setData('<%=item.idcustomer%>','<%=item.username%>')"></button>
+                                        </td>
+                                    </tr>
+                                    <%});%>
+                                    <script >
+                                    function Confirm_del(){
+                                        var result = confirm('Bạn chắc chắn muốn xóa?');
+                                        return result;
+                                    }
+                                        function setData(id,username){
+                                            document.getElementById('docreate').value='update';
+                                            document.getElementById('username').readOnly = true;
+                                            document.getElementById('fullname').focus();
+                                            document.getElementById('id').value=document.getElementById('id-'+id).value;
+                                            document.getElementById('fullname').value = document.getElementById('fullname-'+id).value;
+                                            document.getElementById('email').value = document.getElementById('email-'+id).value;
+                                            document.getElementById('username').value = document.getElementById('username-'+username).value;
+                                            document.getElementById('password').value = document.getElementById('password-'+id).value;
+                                            document.getElementById('birthday').value = document.getElementById('birthday-'+id).value;
+                                            document.getElementById('gender').value = document.getElementById('gender-'+id).value;
+                                            document.getElementById('identitycard').value = document.getElementById('identitycard-'+id).value;
+                                            document.getElementById('phone').value = document.getElementById('phone-'+id).value;
+                                            document.getElementById('status').value=document.getElementById('status-'+id).value;
+
+                                        }
+                                        function Reset(){
+                                            document.getElementById('fullname').focus();
+                                            document.getElementById('docreate').value='create';
+                                            document.getElementById('username').readOnly = false;
+                                        }
+                                        function checkUser(){
+
+                                            var user = document.getElementById('username').value;
+                                            var ac=document.getElementById('docreate').value;
+
+                                            if(user != '' && ac=='create'){
+                                                 if(user == document.getElementById('username-'+user).value){
+                                                    alert('Tài khoản đã tồn tại!');
+                                                    document.getElementById('username').focus();
+                                                    return false; 
+                                                 }
+                                            }
+                                                                                      
+                                            if(document.getElementById('fullname') .value==''){
+                                                    alert('Không được để trống họ và tên!');
+                                                    document.getElementById('fullname').focus();
+                                                    return false; 
+                                                } 
+                                            if(document.getElementById('email').value==''){
+                                                    alert('Không được để trống email!');
+                                                    document.getElementById('email').focus();
+                                                    return false;
+                                                    
+                                                }    
+                                            if(document.getElementById('username').value==''){
+                                                    alert('Không được để trống tên tài khoản!');
+                                                    document.getElementById('username').focus();
+                                                    return false; 
+                                                   }
+                                            if(document.getElementById('password').value==''){
+                                                    alert('Không được để trống mật khẩu!');
+                                                   document.getElementById('password').focus();
+                                                    return false; 
+                                                    
+                                                } 
+                                            if(document.getElementById('birthday').value==''){
+                                                    alert('Không được để trống ngày sinh!');
+                                                    document.getElementById('birthday').focus();
+                                                    return false; 
+                                                    
+                                                } 
+                                            if(document.getElementById('gender').value=='0'){
+                                                    alert('Không được để trống giới tính!');
+                                                    document.getElementById('gender').focus();
+                                                    return false; 
+                                                    
+                                                }
+                                            if(document.getElementById('identitycard').value==''){
+                                                    alert('Không được để trống CMTND!');
+                                                   document.getElementById('identitycard').focus();
+                                                    return false; 
+                                                    
+                                                }
+                                            if(document.getElementById('phone').value==''){
+                                                    alert('Không được để trống số điện thoại!');
+                                                    document.getElementById('phone').focus();
+                                                    return false;  
+                                                }
+                                            if(document.getElementById('status').value=='2'){
+                                                    alert('Không được để trống trạng thái!');
+                                                    document.getElementById('status').focus();
+                                                    return false;  
+                                                }
+                                            }
+
+                                        </script>
+                                </tbody>
+                            </table>
+                            <!-- /.table-responsive -->  
+                            <div class="well">
+                                    <form action="/customersave" method="post" >
+                                        <input type="hidden" name="id" id="id">
+                                        <input type="hidden" name="docreate" id="docreate" value="create">
+                                            <div class="form-group">
+                                                <label for="name" class="cols-sm-2 control-label">Tên*</label>
+                                                <div class="cols-sm-10">
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon"><i class="fa fa-bookmark fa-lg" aria-hidden="true"></i></span>
+                                                        <input type="text" class="form-control" name="fullname" id="fullname"  placeholder="Nhập vào họ và tên"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="form-group">
+                                                <label for="name" class="cols-sm-2 control-label">Email*</label>
+                                                <div class="cols-sm-10">
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></span>
+                                                        <input type="text" class="form-control" name="email" id="email"  placeholder="Nhập vào email"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="form-group">
+                                                <label for="name" class="cols-sm-2 control-label">Tài Khoản*</label>
+                                                <div class="cols-sm-10">
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon"><i class="fa fa-user fa-lg" aria-hidden="true"></i></span>
+                                                        <input type="text" class="form-control" name="username" id="username"  placeholder="Nhập vào tên tài khoản"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="name" class="cols-sm-2 control-label">Mật khẩu*</label>
+                                                <div class="cols-sm-10">
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon"><i class="fa fa-eyedropper fa-lg" aria-hidden="true"></i></span>
+                                                        <input type="password" class="form-control" name="password" id="password"  placeholder="Nhập vào mật khẩu"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="form-group">
+                                                <label for="email" class="cols-sm-2 control-label">Ngày sinh*</label>
+                                                <div class="cols-sm-10">                                                    
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon"><i class="fa fa-birthday-cake fa-lg" aria-hidden="true"></i></span>
+                                                        <input type="date" class="form-control" name="birthday" id="birthday"  placeholder="mm dd yy"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="email" class="cols-sm-2 control-label">Giới tính*</label>
+                                                <div class="cols-sm-10">                                                    
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon"><i class="fa fa-genderless fa-lg" aria-hidden="true"></i></span>
+                                                        <select class="form-control" name="gender" id="gender"> 
+                                                            <option value="0">--Chọn--</option>
+                                                            <option value="1">Nam</option>
+                                                            <option value="2">Nữ</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                             <div class="form-group">
+                                                <label for="name" class="cols-sm-2 control-label">CMTND*</label>
+                                                <div class="cols-sm-10">
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon"><i class="fa fa-credit-card fa-lg" aria-hidden="true"></i></span>
+                                                        <input type="text" class="form-control" name="identitycard" id="identitycard"  placeholder="Nhập vào CMTND"/>
+                                                    </div>
+                                                </div>
+                                                </div>
+                                                <div class="form-group">
+                                                <label for="name" class="cols-sm-2 control-label">Điện thoại*</label>
+                                                <div class="cols-sm-10">
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon"><i class="fa fa-mobile-phone fa-lg" aria-hidden="true"></i></span>
+                                                        <input type="text" class="form-control" name="phone" id="phone"  placeholder="Nhập vào số điện thoại"/>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                <label for="email" class="cols-sm-2 control-label">Trạng thái*</label>
+                                                <div class="cols-sm-10">                                                    
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon"><i class="fa fa-star-o fa-lg" aria-hidden="true"></i></span>
+                                                        <select class="form-control" name="status" id="status"> 
+                                                            <option value="2">--Chọn--</option>
+                                                            <option value="1">Hoạt động</option>
+                                                            <option value="0">Ngừng hoạt động</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                         <div class="form-group">
+                                                <table style="width: 100%;">
+                                                <tbody><tr>
+                                                    <td style="text-align: left;padding: 10px">
+                                                        <button type="submit" id="btn_ok" class="btn btn-primary btn-lg btn-block login-button"onclick="return checkUser()">OK</button>
+                                                    </td>
+                                                    <td style="text-align: right;">
+                                                        <button type="reset" id="btn_re" class="btn btn-primary btn-lg btn-block login-button" onclick="return Reset()">Reset</button>
+                                                    </td>
+                                                </tr></tbody>
+                                            </table>
+                                        </div>
+                                    </form>                           
+                            </div>                         
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+           
+    </div>
+
+</div>
+<% include admin_footer %>

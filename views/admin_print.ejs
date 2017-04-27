@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<% include admin_top %>
+<% include admin_menu %>
+<div id="wrapper">
+    <div id="page-wrapper">	
+    <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">In vé xem phim</h1>
+                </div>
+                <!-- /.col-lg-12 -->
+    <div class="row">
+            <div class="col-lg-12">
+                    <div class="panel panel-default">                       
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example" style="font-size: 11px">
+                                <thead>
+                                    <tr style="text-align: center; font-weight: bold;">
+                                        <td>Tên khách hàng</td>
+                                        <td>Tên phim</td>
+                                        <td>Phòng</td>
+                                        <td>Kiểu ghế</td>
+                                        <td>Tên ghế</td>
+                                        <td>Ngày chiếu</td>
+                                        <td>Thời gian chiếu</td>
+                                        <td>Giá vé</td>
+                                        <td>Trạng thái</td>
+                                        <td>Thao tác</td>
+                                    </tr>
+                                </thead>
+                                <tbody> 
+                                <% getticketinfo.forEach(function(item){%> 
+                                    <tr class="odd gradeX" style="text-align: center;">
+                                        <td><input type="hidden" id="<%=item.idticketinfo%>" value="<%=item.idticketinfo%>">
+                                            <input type="hidden" id="<%=item.nameCustomer%>" value="<%=item.nameCustomer%>"><%=item.nameCustomer%></td>
+                                            <td><input type="hidden" id="" value="">
+                                            <input type="hidden" id="name-<%=item.idticketinfo%>" value="<%=item.namemovie%>"><%=item.namemovie%></td>
+                                            <td><input type="hidden" id="room-<%=item.idticketinfo%>" value="<%=item.roomname%>"><%=item.roomname%></td>
+                                            <td><input type="hidden" id="<%=item.typeofseat%>" value="<%=item.typeofseat%>">
+                                            <%if(item.typeofseat=='1'){%>
+                                                Ghế Thường
+                                            <%}if(item.typeofseat=='2'){%>
+                                                Ghế Vip
+                    
+                                            <%}if(item.typeofseat=='3'){%>
+                                                Ghế đôi
+                                            <%}%>
+                                        </td>
+                                            <td><input type="hidden" id="chair-<%=item.idticketinfo%>" value="<%=item.namechair%>"><%=item.namechair%></td>
+                                            <td><input type="hidden" id="date-<%=item.idticketinfo%>" value="<%=item.date%>"><%=item.date%></td>
+                                            <td><input type="hidden" id="timeframe-<%=item.idticketinfo%>" value="<%=item.timeframe%>">
+                                            <%if(item.timeframe=='1'){%>
+                                                09h00-11h40
+                                            <%}%>
+                                            <%if(item.timeframe=='2'){%>
+                                                11h40-14h20
+                                            <%}%>
+                                            <%if(item.timeframe=='3'){%>
+                                                14h20-17h00
+                                            <%}%>
+                                            <%if(item.timeframe=='4'){%>
+                                                17h00-19h40
+                                            <%}%>
+                                            <%if(item.timeframe=='5'){%>
+                                                19h40-21h20
+                                            <%}%>
+                                            <%if(item.timeframe=='6'){%>
+                                                21h20-00h00
+                                            <%}%>
+                                        </td>
+                                            <td><input type="hidden" id="price-<%=item.idticketinfo%>" value="<%=item.price%>"><%=item.price%></td>
+                                            <td><input type="hidden" id="status-<%=item.idschedule%>" value="<%=item.status%>">
+                                            <%if(item.status=='1'){%>
+                                                Chưa in vé
+                                            <%}%>
+                                        </td> 
+                                            <td><a href="UpdatePrint/?id=<%=item.idticketinfo%>"><button class="fa fa-print" title="Cập nhật thông tin"onclick="printdiv('print','<%=item.idticketinfo%>')" data-dismiss="modal"></button></a></td>
+                                        </tr>
+                                    <%})%>
+                                </tbody>
+                                
+                            </table>
+
+    </div>
+    </div>
+    <!--In hóa đơn //////////////////////////////////////////////////////// -->    
+    <div class="panel-body" style="display: none;" id="print">
+        <table style="height: 2in; width: 3.5in">
+            <tr>
+                <td style="border: 1px black dashed; padding-left: 5px;">
+                    <table>
+                        <tr>
+                            <td><p style="font-size: 10px; font-weight: bold;">Cinema</p>
+                                <p style="font-size: 8px;">
+                                    Địa chỉ: Số 50, Ngõ 121 Chùa Láng, Đống Đa, Hà Nội <br>
+                                    Điện thoại: (+84) 043.123.123 <br>
+                                    Email: cinema@gmail.com.vn <br>
+                                </p>
+                            </td>
+                        </tr>                 
+                    </table>
+                    <div>
+                        <table style="width: 100%">
+                            <tr style="width: 100%">
+                                <td  colspan="2"  style="padding-right: 10px; font-weight: bold; font-size: 14px;" ><span id="name1"></span></td>
+                            </tr>
+                            <tr style="width: 100%">
+                                <td style="font-weight: bold; font-size: 12px;"><span id="time1"></span></td>
+                                <td style="font-weight: bold; font-size: 12px;"><span id="timeframe1"></span>
+                            </tr>
+                            <tr style="width: 100%">
+                                <td  style="font-weight: bold; font-size: 12px;"><span id="room1"></span></td>
+                                <td  style="font-weight: bold; font-size: 12px;"><span id="chair1"></span></td>
+                            </tr>
+                            <tr style="width: 100%">
+                                <td  style="font-weight: bold; font-size: 14px;"><span id="price1"></span> VND</td>
+                            </tr>
+                        </table>
+                    </div>
+                </td>
+
+                <td style="border: 1px black dashed; padding-left: 5px;">
+                    <table>
+                        <tr>
+                            <td><p style="font-size: 7px; font-weight: bold;">Cinema</p>
+                                <p style="font-size: 5px;">
+                                    Địa chỉ: Số 50, Ngõ 121 Chùa Láng, Đống Đa, Hà Nội <br>
+                                    Điện thoại: (+84) 043.123.123 <br>
+                                    Email: cinema@gmail.com.vn <br>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding-right: 8px; font-weight: bold; font-size: 12px;" ><span id="name2"></td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: bold; font-size: 8px;"><span id="time2"></span></td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: bold; font-size: 8px;"><span id="timeframe2"></span></td>
+                        </tr>
+                        <tr>
+                            <td  style="font-weight: bold; font-size: 8px;"><span id="room2"></span></td>
+                        </tr>
+                        <tr>
+                            <td  style="font-weight: bold; font-size: 8px;"><span id="chair2"></span></td>
+                        </tr>
+                        <tr>
+                            <td  style="font-weight: bold; font-size: 10px;"><span id="price2"></span> VNĐ</td>
+                        </tr>                 
+                    </table>
+                </td>     
+            </tr>                                                      
+        </table>
+    </div>
+
+    <script>
+        function printdiv(printpage,id) {
+            document.getElementById('name1').innerHTML=document.getElementById('name-'+id).value;
+            document.getElementById('name2').innerHTML=document.getElementById('name-'+id).value;
+            document.getElementById('time1').innerHTML=document.getElementById('date-'+id).value;
+            document.getElementById('time2').innerHTML=document.getElementById('date-'+id).value;
+            if(document.getElementById('timeframe-'+id)=='1'){
+                document.getElementById('timeframe1').innerHTML="09h00-11h40";
+                document.getElementById('timeframe2').innerHTML="09h00-11h40";
+            }
+            if(document.getElementById('timeframe-'+id)=='2'){
+                document.getElementById('timeframe1').innerHTML="11h40-14h20";
+                document.getElementById('timeframe2').innerHTML="11h40-14h20";
+            }
+            if(document.getElementById('timeframe-'+id)=='3'){
+                document.getElementById('timeframe1').innerHTML="14h20-17h00";
+                document.getElementById('timeframe2').innerHTML="14h20-17h00";
+            }
+            if(document.getElementById('timeframe-'+id)=='4'){
+                document.getElementById('timeframe1').innerHTML="17h00-19h40";
+                document.getElementById('timeframe2').innerHTML="17h00-19h40";
+            }
+            if(document.getElementById('timeframe-'+id)=='5'){
+                document.getElementById('timeframe1').innerHTML="19h40-21h20";
+                document.getElementById('timeframe2').innerHTML="19h40-21h20";
+            }
+            if(document.getElementById('timeframe-'+id)=='6'){
+                document.getElementById('timeframe1').innerHTML="21h20-00h00";
+                document.getElementById('timeframe2').innerHTML="21h20-00h00";
+            }
+            document.getElementById('room1').innerHTML=document.getElementById('room-'+id).value;
+            document.getElementById('room2').innerHTML=document.getElementById('room-'+id).value;
+            document.getElementById('chair1').innerHTML=document.getElementById('chair-'+id).value;
+            document.getElementById('chair2').innerHTML=document.getElementById('chair-'+id).value;
+            document.getElementById('price1').innerHTML=document.getElementById('price-'+id).value;
+            document.getElementById('price2').innerHTML=document.getElementById('price-'+id).value;
+
+
+            
+            var headstr = "<html><head><title></title></head><body>";
+            var footstr = "</body>";
+            var newstr = document.all.item(printpage).innerHTML;
+            var oldstr = document.body.innerHTML;
+            document.body.innerHTML = headstr + newstr + footstr;
+            window.print();
+            document.body.innerHTML = oldstr;
+            return false;
+        }
+    </script>
+<!-- /.panel-body/////////////////////////////////////////////// -->
+</div>
+<% include admin_footer %>

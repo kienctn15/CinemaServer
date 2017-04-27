@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<% include admin_top %>
+<div id="wrapper">
+<% include admin_menu %>
+    <div id="page-wrapper">
+        <center>
+        <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Quản lý giá vé</h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            </center>
+            
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">                       
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example" style="font-size: 11px">
+                                <thead>
+                                    <tr style="text-align: center; font-weight: bold;">
+                                        <td>Kiểu phim</td>
+                                        <td>Khung giờ</td>
+                                        <td>Kiểu ngày</td>
+                                        <td>Kiểu ghế</td>
+                                        <td>Giá</td>
+                                        <td>Trạng thái</td>
+                                        <td>Thao tác</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                <% data.forEach(function(item){%>
+                                    <tr class="odd gradeX" style="text-align: center;">
+                                        
+                                        <td><input type="hidden" id="id-<%=item.idticketprice%>" value="<%=item.idticketprice%>">
+                                            <input type="hidden" id="typeofmovie-<%=item.idticketprice%>" value="<%=item.typeofmovie%>">
+                                            <%if(item.typeofmovie=='1'){%>
+                                                2D
+                                            <%}if(item.typeofmovie=='2'){%>
+                                                3D
+                                            <%}%>
+                                        </td>
+                                        <td><input type="hidden" id="typeoftimeframe-<%=item.idticketprice%>" value="<%=item.typeoftimeframe%>">
+                                            <%if(item.typeoftimeframe=='1'){%>
+                                                Trước 17h
+                                            <%}if(item.typeoftimeframe=='2'){%>
+                                                Sau 17h
+                                            <%}%>
+                                        </td>
+                                        <td><input type="hidden" id="typeofday-<%=item.idticketprice%>" value="<%=item.typeofday%>">
+                                            <%if(item.typeofday=='1'){%>
+                                                Ngày Thường
+                                            <%}if(item.typeofday=='2'){%>
+                                                Cuối Tuần
+                                            <%}%>
+                                        </td>
+                                        <td><input type="hidden" id="typeofchair-<%=item.idticketprice%>" value="<%=item.typeofchair%>">
+                                            <%if(item.typeofchair=='1'){%>
+                                                Ghế Thường
+                                            <%}if(item.typeofchair=='2'){%>
+                                                Ghế Vip
+                                            <%}if(item.typeofchair=='3'){%>
+                                                Ghế Đôi
+                                            <%}%>
+                                        </td>
+                                        <td><input type="hidden" id="price-<%=item.idticketprice%>" value="<%=item.price%>"><%=item.price%></td>
+                                        <td><input type="hidden" id="status-<%=item.idticketprice%>" value="<%=item.status%>">
+                                            <%if(item.status=='1'){%>
+                                                Hoạt động
+                                            <%}if(item.status=='0'){%>
+                                                Ngừng hoạt động
+                                            <%}%>
+                                        </td>
+                                        <td>
+                                            <button class="fa fa-edit" title="Cập nhật thông tin" onclick="return setData('<%=item.idticketprice%>')" data-toggle="modal" data-target="#myModal"></button>
+                                        </td>
+                                    </tr>
+                                    <%});%>
+                                    <script >
+                                        function setData(id){
+                                           document.getElementById('changeprice').value=document.getElementById('price-'+id).value;
+                                           document.getElementById('changestatus').value=document.getElementById('status-'+id).value; 
+                                           document.getElementById('idticketprice').value=document.getElementById('id-'+id).value;
+                                        }
+                                        </script>
+                                </tbody>
+                            </table>
+                            <!-- /.table-responsive -->
+                            <!-- modal -->
+                            <div class="modal fade" id="myModal" role="dialog">
+                                    <div class="modal-dialog modal-lg">
+                                        <div class="col-md-4 col-md-offset-4">
+                                            <div class="login-panel panel panel-default">
+                                                <div class="panel-heading">
+                                                    <h3 class="panel-title"><span id="food"></span></h3>
+                                                </div>
+                                                <div class="panel-body">
+                                                    <form role="form" action="/changeinfo" method="post">
+                                                        <fieldset>
+                                                            <div class="form-group">
+                                                                <label for="name" class="cols-sm-2 control-label">Giá:</label>
+                                                                <div class="cols-sm-10">
+                                                                    <input type="hidden" name="idticketprice" id="idticketprice">
+                                                                    <input type="number" class="form-control" name="changeprice" id="changeprice"/>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                            <label for="email" class="cols-sm-2 control-label">Trạng thái:</label>
+                                                                <div class="cols-sm-10">
+                                                                        <select class="form-control" id="changestatus" name="changestatus"> 
+                                                                            <option value="1">Hoạt động</option>
+                                                                            <option value="0">Ngừng hoạt động</option>
+                                                                        </select>
+                                                                </div>
+                                                                        
+                                                                </div>
+                                                                
+                                                            
+                                                            <!-- Change this to a button or input when using this as a form -->
+                                                            <button type="submit" class="btn btn-lg btn-primary btn-block">OK</button>
+                                                        </fieldset>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>                      
+                                    </div>
+                                </div>                          
+                        </div>
+                        <!--/ and modal -->
+
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+           
+    </div>
+
+</div>
+<% include admin_footer %>

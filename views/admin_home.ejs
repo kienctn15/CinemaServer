@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<% include admin_top %>
+<% include admin_menu %>
+<div id="wrapper">
+    <div id="page-wrapper">	
+    <div class="row">
+    <center>
+        <div class="col-lg-12">
+                    <h1 class="page-header">Quản lý đặt vé</h1>
+                </div>
+    </center>
+                
+                <!-- /.col-lg-12 -->
+    </div>
+   <style>
+.button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.button1 {
+    background-color: white; 
+    color: black; 
+    border: 2px solid #4CAF50;
+}
+
+.button1:hover {
+    background-color: #4CAF50;
+    color: white;
+}
+}
+</style>
+<script>
+    function daynow(getday){
+        switch(getday.getDay()){
+            case 0 : 
+                day="CN";
+                break;
+            case 1 : 
+                day="T2";
+                break;
+            case 2 : 
+                day="T3";
+                break;
+            case 3 : 
+                day="T4";
+                break;
+            case 4 : 
+                day="T5";
+                break;
+            case 5 : 
+                day="T6";
+                break;
+            case 6 : 
+                day="T7";
+                break;
+            }
+
+            return day;
+
+    } 
+    window.onload = function(){
+        var a = new Date();
+        var b = new Date();
+        var c = new Date();
+        var d = new Date();
+        var e = new Date();
+        var f = new Date();
+        var g = new Date();
+        b.setDate(a.getDate()+1);
+        c.setDate(a.getDate()+2);
+        d.setDate(a.getDate()+3);
+        e.setDate(a.getDate()+4);
+        f.setDate(a.getDate()+5);
+        g.setDate(a.getDate()+6);
+        //alert(a.getDate());
+        //alert(b.getMonth());
+        //alert(a.getgetFullYear();
+        if(a.getDate()<10){
+            var aaa="0"+a.getDate();
+        }
+        else{
+            aaa=a.getDate();
+        }
+        if(b.getDate()<10){
+            var bbb="0"+b.getDate();
+        }
+        else{
+            bbb=b.getDate();
+        }
+        if(c.getDate()<10){
+            var ccc="0"+c.getDate();
+        }
+        else{
+            ccc=c.getDate();
+        }
+        if(d.getDate()<10){
+            var ddd="0"+d.getDate();
+        }
+        else{
+            ddd=d.getDate();
+        }
+        if(e.getDate()<10){
+            var eee="0"+e.getDate();
+        }
+        else{
+            eee=e.getDate();
+        }
+        if(f.getDate()<10){
+            var fff="0"+f.getDate();
+        }
+        else{
+            fff=f.getDate();
+        }
+        if(g.getDate()<10){
+            var ggg="0"+g.getDate();
+        }
+        else{
+            ggg=g.getDate();
+        }
+        document.getElementById('date_a').innerHTML=aaa;
+        document.getElementById('month_a').innerHTML=a.getMonth()+1;
+        document.getElementById('date_b').innerHTML=bbb;
+        document.getElementById('month_b').innerHTML=b.getMonth()+1;
+        document.getElementById('date_c').innerHTML=ccc;
+        document.getElementById('month_c').innerHTML=c.getMonth()+1;
+        document.getElementById('date_d').innerHTML=ddd;
+        document.getElementById('month_d').innerHTML=d.getMonth()+1;
+        document.getElementById('date_e').innerHTML=eee;
+        document.getElementById('month_e').innerHTML=e.getMonth()+1;
+        document.getElementById('date_f').innerHTML=fff;
+        document.getElementById('month_f').innerHTML=f.getMonth()+1;
+        document.getElementById('date_g').innerHTML=ggg;
+        document.getElementById('month_g').innerHTML=g.getMonth()+1;
+
+
+        
+        document.getElementById('day_a').innerHTML=daynow(a);
+        document.getElementById('day_b').innerHTML=daynow(b);
+        document.getElementById('day_c').innerHTML=daynow(c);
+        document.getElementById('day_d').innerHTML=daynow(d);
+        document.getElementById('day_e').innerHTML=daynow(e);
+        document.getElementById('day_f').innerHTML=daynow(f);
+        document.getElementById('day_g').innerHTML=daynow(g);
+        if((a.getMonth() + 1)<10){
+            aa=a.getMonth() + 1;
+            var a_month = "0"+aa;
+        }
+        else{
+            var b_month = b.getMonth() + 1;
+        }
+        if((b.getMonth() + 1)<10){
+            bb=b.getMonth() + 1;
+            var b_month = "0"+bb;
+        }
+        else{
+            var b_month = b.getMonth() + 1;
+        }
+        if((c.getMonth() + 1)<10){
+            cc=c.getMonth() + 1;
+            var c_month = "0"+cc;
+        }
+        else{
+            var c_month = c.getMonth() + 1;
+        }
+        if((d.getMonth() + 1)<10){
+            dd=d.getMonth() + 1;
+            var d_month = "0"+dd;
+        }
+        else{
+            var d_month = d.getMonth() + 1;
+        }
+        if((e.getMonth() + 1)<10){
+            ee=e.getMonth() + 1;
+            var e_month = "0"+ee;
+        }
+        else{
+            var e_month = e.getMonth() + 1;
+        }
+        if((f.getMonth() + 1)<10){
+            ff=f.getMonth() + 1;
+            var f_month = "0"+ff;
+        }
+        else{
+            var f_month = f.getMonth() + 1;
+        }
+        if((g.getMonth() + 1)<10){
+            gg=g.getMonth() + 1;
+            var g_month = "0"+gg;
+        }
+        else{
+            var g_month = g.getMonth() + 1;
+        }
+        document.getElementById('link_a').href = "set?day="+a.getFullYear()+"-"+a_month+"-"+aaa+"&week="+a.getUTCDay();
+        document.getElementById('link_b').href = "set?day="+b.getFullYear()+"-"+b_month+"-"+bbb+"&week="+b.getUTCDay();
+        document.getElementById('link_c').href = "set?day="+c.getFullYear()+"-"+c_month+"-"+ccc+"&week="+c.getUTCDay();
+        document.getElementById('link_d').href = "set?day="+d.getFullYear()+"-"+d_month+"-"+ddd+"&week="+d.getUTCDay();
+        document.getElementById('link_e').href = "set?day="+e.getFullYear()+"-"+e_month+"-"+eee+"&week="+e.getUTCDay();
+        document.getElementById('link_f').href = "set?day="+f.getFullYear()+"-"+f_month+"-"+fff+"&week="+f.getUTCDay();
+        document.getElementById('link_g').href = "set?day="+g.getFullYear()+"-"+g_month+"-"+ggg+"&week="+g.getUTCDay();
+
+        
+    }
+    function clickA(id,time,idroom,showday,idschedule){
+        var idmovie= document.getElementById('idmovie-'+id).value;
+        document.getElementById('setday-'+id).value=showday;
+        document.getElementById('setroom-'+id).value=idroom;
+        document.getElementById('setidmovie-'+id).value=idmovie;
+        document.getElementById('setschedule-'+id).value=idschedule;
+
+        document.getElementById('time-'+id+'-'+time).style.backgroundColor = "#4CAF50";
+        var time1 = document.getElementById('settime-'+id).value;
+        document.getElementById('settime-'+id).value=time;
+        if(time1!=""){
+            document.getElementById('time-'+id+'-'+time1).style.backgroundColor = null;
+        }
+    }
+</script>
+<div class="row">
+<a href="" id="link_a">
+<div  class="button button1"  style="padding:10px; margin:10px;">
+    <table cellspaccing='0px' cellpadding='0px'>
+        <tr>
+            <td style="text-align:center; font-size:15px;"><span id="month_a"></span></td>
+            <td rowspan='2' style="text-align:right; font-size:35px; font-weight: bold; padding-left:10px;"><span id="date_a"></span></td>
+       </tr>
+       <tr>
+            <td style="text-align:center; font-size:15px;"><span id="day_a"></span></td>
+      </tr>
+  </table>
+</div>
+</a>
+<a href="" id="link_b">
+<div  class="button button1" style="padding:10px; margin:10px;">
+    <table cellspaccing='0px' cellpadding='0px'>
+        <tr>
+            <td style="text-align:center; font-size:15px;"><span id="month_b"></span></td>
+            <td rowspan='2' style="text-align:right; font-size:35px; font-weight: bold; padding-left:10px;"><span id="date_b"></span></td>
+       </tr>
+       <tr>
+            <td style="text-align:center; font-size:15px;"><span id="day_b"></span></td>
+      </tr>
+  </table>
+</div>
+</a>
+<a href="" id="link_c">
+<div  class="button button1" style="padding:10px; margin:10px;">
+    <table cellspaccing='0px' cellpadding='0px'>
+        <tr>
+            <td style="text-align:center; font-size:15px;"><span id="month_c"></span></td>
+            <td rowspan='2' style="text-align:right; font-size:35px; font-weight: bold; padding-left:10px;"><span id="date_c"></span></td>
+       </tr>
+       <tr>
+            <td style="text-align:center; font-size:15px;"><span id="day_c"></span></td>
+      </tr>
+  </table>
+</div>
+</a>
+<a href="" id="link_d">
+<div class="button button1" style="padding:10px; margin:10px;">
+    <table cellspaccing='0px' cellpadding='0px'>
+        <tr>
+            <td style="text-align:center; font-size:15px;"><span id="month_d"></span></td>
+            <td rowspan='2' style="text-align:right; font-size:35px; font-weight: bold; padding-left:10px;"><span id="date_d"></span></td>
+       </tr>
+       <tr>
+            <td style="text-align:center; font-size:15px;"><span id="day_d"></span></td>
+      </tr>
+  </table>
+</div>
+</a>
+<a href="" id="link_e">
+<div class="button button1" style="padding:10px; margin:10px;">
+    <table cellspaccing='0px' cellpadding='0px'>
+        <tr>
+            <td style="text-align:center; font-size:15px;"><span id="month_e"></span></td>
+            <td rowspan='2' style="text-align:right; font-size:35px; font-weight: bold; padding-left:10px;"><span id="date_e"></span></td>
+       </tr>
+       <tr>
+            <td style="text-align:center; font-size:15px;"><span id="day_e"></span></td>
+      </tr>
+  </table>
+</div>
+</a>
+<a href="" id="link_f">
+<div class="button button1" style="padding:10px; margin:10px;">
+    <table cellspaccing='0px' cellpadding='0px'>
+        <tr>
+            <td style="text-align:center; font-size:15px;"><span id="month_f"></span></td>
+            <td rowspan='2' style="text-align:right; font-size:35px; font-weight: bold; padding-left:10px;"><span id="date_f"></span></td>
+       </tr>
+       <tr>
+            <td style="text-align:center; font-size:15px;"><span id="day_f"></span></td>
+      </tr>
+  </table>
+</div>
+</a>
+
+<a href="" id="link_g">
+<div class="button button1" style="padding:10px; margin:10px;">
+    <table cellspaccing='0px' cellpadding='0px'>
+        <tr>
+            <td style="text-align:center; font-size:15px;"><span id="month_g"></span></td>
+            <td rowspan='2' style="text-align:right; font-size:35px; font-weight: bold; padding-left:10px;"><span id="date_g"></span></td>
+       </tr>
+       <tr>
+            <td style="text-align:center; font-size:15px;"><span id="day_g"></span></td>
+      </tr>
+  </table>
+</div>
+</a>
+</div> 
+    <hr>
+     <div class="row">
+     <% var id = ''%>
+     <% var idschedule= ''%>
+     <% var showday = ''%>
+     <% var idroom = ''%>
+     <% var image = ''%>
+     <% var namemovie =''%>
+     <% var j = 0 %>
+     <% var mangfilm = []%>
+     <% var time=[]%>
+     <%if(dayschedule != undefined){ 
+        dayschedule.forEach(function(item){%> 
+            <%if(item.idmovie != id){
+                j++
+                if(j!=1){
+                    mangfilm.push({id: id, idroom: idroom, idschedule: idschedule, image: image, namemovie:namemovie, showday: showday, time:time})
+                    time=[]
+                    image = ''
+                    namemovie =''
+                    idroom = ''
+                    showday = ''
+                    idschedule = ''
+                }
+                id = item.idmovie
+                idroom = item.idroom
+                idschedule = item.idschedule
+                image = item.Movie.image
+                namemovie = item.Movie.name
+                showday = item.showday
+                time.push(item.time)
+            }else{%>
+                  <% j++ %>
+                  <% time.push(item.time) %>   
+            <%}
+            if(j==dayschedule.length){
+            mangfilm.push({id: item.idmovie,idroom: item.idroom, idschedule: item.idschedule, image: item.Movie.image,namemovie: item.Movie.name, showday: item.showday, time:time})
+            }
+        })
+     }%>
+
+     <% mangfilm.forEach(function(item){ %>
+            <div id="" style="" class="col-md-6">
+                    <div class="row-">
+                        <div class="col-md-6" style="float: left; padding: 10px;">
+                            <img class="img" src="<%= item.image %>" style="height: 266.625px;">
+                        </div>
+                    </div>
+                    <div class="col-md-6" style="float: right;">
+                        <div class="info_film">
+                            <h3>
+                            <input type="hidden" name="showday-<%=item.idschedule%>" id="showday-<%=item.idschedule%>" value="<%=item.showday%>">
+                            <input type="hidden" name="idmovie-<%=item.id%>" id="idmovie-<%=item.id%>" value="<%=item.id%>">
+                            <input type="hidden" name="idroom-<%=item.idroom%>" id="idroom-<%=item.idroom%>" value="<%=item.idroom%>">
+                            <input type="hidden" name="idschedule-<%=item.idschedule%>" id="idschedule-<%=item.idschedule%>" value="<%=item.idschedule%>">
+                            <a href=""><%= item.namemovie %></a>
+                            </h3>
+                            <br> 
+                        </div>
+                        <%item.time.forEach(function(i){%>
+                        <div>
+                        <%if(i=='1'){%>
+                            <div class="button button1 col-md-3" id="time-<%=item.id%>-<%=i%>"< style="padding:10px; margin:2px;"onclick="clickA('<%=item.id%>','1','<%=item.idroom%>','<%=item.showday%>','<%=item.idschedule%>')">
+                                <table cellspaccing='0px' cellpadding='0px'>
+                                <tr>
+                                <td style="text-align:center; font-size:10px;">09h00-11h40</td>
+                                </tr>
+                                </table>
+                            </div>
+                            <%}
+                            if(i=='2'){%>
+                            <div class="button button1 col-md-3" id="time-<%=item.id%>-<%=i%>" style="padding:10px; margin:2px;"onclick="clickA('<%=item.id%>','2','<%=item.idroom%>','<%=item.showday%>','<%=item.idschedule%>')">
+                                <table cellspaccing='0px' cellpadding='0px'>
+                                <tr>
+                                <td style="text-align:center; font-size:10px;">11h40-14h20</td>
+                                </tr>
+                                </table>
+                            </div>
+                            <%}if(i=='3'){%>
+                            <div class="button button1 col-md-3" id="time-<%=item.id%>-<%=i%>" style="padding:10px; margin:2px;"onclick="clickA('<%=item.id%>','3','<%=item.idroom%>','<%=item.showday%>','<%=item.idschedule%>')">
+                                <table cellspaccing='0px' cellpadding='0px'>
+                                <tr>
+                                <td style="text-align:center; font-size:10px;">14h20-17h00</td>
+                                </tr>
+                                </table>
+                            </div>
+                            <%}if(i=='4'){%>
+                            <div class="button button1 col-md-3" id="time-<%=item.id%>-<%=i%>" style="padding:10px; margin:2px;"onclick="clickA('<%=item.id%>','4','<%=item.idroom%>','<%=item.showday%>','<%=item.idschedule%>')">
+                                <table cellspaccing='0px' cellpadding='0px'>
+                                <tr>
+                                <td style="text-align:center; font-size:10px;">17h00-19h40</td>
+                                </tr>
+                                </table>
+                            </div>
+                            <%}if(i=='5'){%>
+                            <div class="button button1 col-md-3" id="time-<%=item.id%>-<%=i%>" style="padding:10px; margin:2px;"onclick="clickA('<%=item.id%>','5','<%=item.idroom%>','<%=item.showday%>','<%=item.idschedule%>')">
+                                <table cellspaccing='0px' cellpadding='0px'>
+                                <tr>
+                                <td style="text-align:center; font-size:10px;">19h40-21h20</td>
+                                </tr>
+                                </table>
+                            </div>
+                            <%}if(i=='6'){%>
+                            <div class="button button1 col-md-3" id="time-<%=item.id%>-<%=i%>" style="padding:10px; margin:2px;"onclick="clickA('<%=item.id%>','6','<%=item.idroom%>','<%=item.showday%>','<%=item.idschedule%>')">
+                                <table cellspaccing='0px' cellpadding='0px'>
+                                <tr>
+                                <td style="text-align:center; font-size:10px;">21h20-00h00</td>
+                                </tr>
+                                </table>
+
+                            </div>
+                              
+                            <%}%>
+                        </div>
+ 
+                        <%})%>
+                        <div class="col-md-9" style="padding-top: 10px">
+                        <form role="form" action="/bookchair" method="post">
+                            <input type="hidden" name="setday" id="setday-<%=item.id%>" value="">
+                            <input type="hidden" name="setidmovie" id="setidmovie-<%=item.id%>" value="">
+                            <input type="hidden" name="settime" id="settime-<%=item.id%>" value="">
+                            <input type="hidden" name="setroom" id="setroom-<%=item.id%>" value="">
+                            <input type="hidden" name="setschedule" id="setschedule-<%=item.id%>" value="">
+                            <input style="width: 100%" class="btn btn-primary btn-block" type="submit" name="submit" id="submit" value="Đặt" onclick="return check('<%=item.id%>')">
+                        </form> 
+                        <script>
+                            function check(id){
+                                if(document.getElementById('setday-'+id).value == ""){
+                                    alert("Vui lòng chọn xuất chiếu trước khi đặt vé!");
+                                    return false;
+                                }else{
+                                    return true;
+                                }
+                            }
+                        </script>
+                        </div>  
+                    </div>  
+                    
+            </div>       
+     <%})%>  
+                        
+                             
+    </div>
+    </div>                                               
+</div>
+</div>    
+<% include admin_footer %>

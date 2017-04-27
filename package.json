@@ -1,0 +1,30 @@
+{
+  "name": "cinema",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "body-parser": "~1.16.0",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.0",
+    "ejs": "~2.5.5",
+    "express": "~4.14.1",
+    "morgan": "~1.7.0",
+    "serve-favicon": "~2.3.2",
+    "mysql": "*",
+    "sequelize": "*",
+    "multer": "*",
+    "string": "^3.3.3",
+    "passport" : "*",         
+    "passport-local" : "*", 
+    "bcrypt-nodejs" : "latest",
+    
+    "express-session": "*" ,
+    "node-datetime":"*" ,
+    "socket.io": "*",
+    "connect-flash": "*",
+    "nodemailer": "*"
+  }
+}

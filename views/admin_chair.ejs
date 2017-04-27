@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<% include admin_top %>
+<% include admin_menu %>
+<div id="wrapper">
+    <div id="page-wrapper">	
+    <center>
+    <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Đặt ghế xem phim</h1>
+                </div>
+                <!-- /.col-lg-12 -->
+    </div>
+    </center>
+   <style>
+.button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.button1 {
+    background-color: white; 
+    color: black; 
+    border: 2px solid #4CAF50;
+}
+.button2 {
+    background-color: white; 
+    color: black; 
+    border: 2px solid #EEDD82;
+}
+.button3 {
+    background-color: white; 
+    color: black; 
+    border: 2px solid #FF1493;
+}
+
+.button1:hover {
+    background-color: #4CAF50;
+    color: white;
+}
+.button2:hover {
+    background-color: #4CAF50;
+    color: white;
+}
+.button3:hover {
+    background-color: #4CAF50;
+    color: white;
+}
+.button4 {
+    background-color: brown; 
+    color: black; 
+    border: 2px solid #FF1493;
+}
+
+}
+</style>
+<!--AAA-->
+<center>
+<div class="button button1" id="A1" style="padding:10px; margin:10px;"onclick="clickA('A1','1')" >
+    <table cellspaccing='0px' cellpadding='0px'>
+       <tr>
+            <td style="text-align:center; font-size:10px;">A1</td>
+      </tr>
+  </table>
+</div>
+<div class="button button1" id="A2" style="padding:10px; margin:10px;"onclick="clickA('A2','1')">
+    <table cellspaccing='0px' cellpadding='0px'>
+       <tr>
+            <td style="text-align:center; font-size:10px;">A2</td>
+      </tr>
+  </table>
+</div>
+<div class="button button1" id="A3" style="padding:10px; margin:10px;"onclick="clickA('A3','1')">
+    <table cellspaccing='0px' cellpadding='0px'>
+       <tr>
+            <td style="text-align:center; font-size:10px;">A3</td>
+      </tr>
+  </table>
+</div>
+<div class="button button1" id="A4" style="padding:10px; margin:10px;"onclick="clickA('A4','1')">
+    <table cellspaccing='0px' cellpadding='0px'>
+       <tr>
+            <td style="text-align:center; font-size:10px;">A4</td>
+      </tr>
+  </table>
+</div>
+<div class="button button1" id="A5" style="padding:10px; margin:10px;"onclick="clickA('A5','1')">
+    <table cellspaccing='0px' cellpadding='0px'>
+       <tr>
+            <td style="text-align:center; font-size:10px;">A5</td>
+      </tr>
+  </table>
+</div>
+<div class="button button1" id="A6" style="padding:10px; margin:10px;"onclick="clickA('A6','1')">
+    <table cellspaccing='0px' cellpadding='0px'>
+       <tr>
+            <td style="text-align:center; font-size:10px;">A6</td>
+      </tr>
+  </table>
+</div>
+<div class="button button1" id="A7" style="padding:10px; margin:10px;"onclick="clickA('A7','1')">
+    <table cellspaccing='0px' cellpadding='0px'>
+       <tr>
+            <td style="text-align:center; font-size:10px;">A7</td>
+      </tr>
+  </table>
+</div>
+<div class="button button1" id="A8" style="padding:10px; margin:10px;"onclick="clickA('A8','1')">
+    <table cellspaccing='0px' cellpadding='0px'>
+       <tr>
+            <td style="text-align:center; font-size:10px;">A8</td>
+      </tr>
+  </table>
+</div> 
+<br>
+<!--BBBBBB-->
+<div class="button button1" id="B1" style="padding:10px; margin:10px;"onclick="clickA('B1','1')">
+    <table cellspaccing='0px' cellpadding='0px'>
+       <tr>
+            <td style="text-align:center; font-size:10px;">B1</td>
+      </tr>
+  </table>
+</div>
+<div class="button button1" id="B2" style="padding:10px; margin:10px;"onclick="clickA('B2','1')">
+    <table cellspaccing='0px' cellpadding='0px'>
+       <tr>
+            <td style="text-align:center; font-size:10px;">B2</td>
+      </tr>
+  </table>
+</div>
+<div class="button button1" id="B3" style="padding:10px; margin:10px;"onclick="clickA('B3','1')">
+    <table cellspaccing='0px' cellpadding='0px'>
+       <tr>
+            <td style="text-align:center; font-size:10px;">B3</td>
+      </tr>
+  </table>
+</div>
+<div class="button button1" id="B4" style="padding:10px; margin:10px;"onclick="clickA('B4','1')">
+    <table cellspaccing='0px' cellpadding='0px'>
+       <tr>
+            <td style="text-align:center; font-size:10px;">B4</td>
+      </tr>
+  </table>
+</div>
+<div class="button button1" id="B5" style="padding:10px; margin:10px;"onclick="clickA('B5','1')">
+    <table cellspaccing='0px' cellpadding='0px'>
+       <tr>
+            <td style="text-align:center; font-size:10px;">B5</td>
+      </tr>
+  </table>
+</div>
+<div class="button button1" id="B6" style="padding:10px; margin:10px;"onclick="clickA('B6','1')">
+    <table cellspaccing='0px' cellpadding='0px'>
+       <tr>
+            <td style="text-align:center; font-size:10px;">B6</td>
+      </tr>
+  </table>
+</div>
+<div class="button button1" id="B7" style="padding:10px; margin:10px;"onclick="clickA('B7','1')">
+    <table cellspaccing='0px' cellpadding='0px'>
+       <tr>
+            <td style="text-align:center; font-size:10px;">B7</td>
+      </tr>
+  </table>
+</div>
+<div class="button button1" id="B8" style="padding:10px; margin:10px;"onclick="clickA('B8','1')">
+    <table cellspaccing='0px' cellpadding='0px'>
+       <tr>
+            <td style="text-align:center; font-size:10px;">B8</td>
+      </tr>
+  </table>
+</div>
+<br>
+<!--CCCCC-->
+<div class="button button1" id="C1" style="padding:10px; margin:10px;"onclick="clickA('C1','1')">
+    <table cellspaccing='0px' cellpadding='0px'>
+       <tr>
+            <td style="text-align:center; font-size:10px;">C1</td>
+      </tr>
+  </table>
+</div>
+<div class="button button1" id="C2" style="padding:10px; margin:10px;"onclick="clickA('C2','1')">
+    <table cellspaccing='0px' cellpadding='0px'>
+       <tr>
+            <td style="text-align:center; font-size:10px;">C2</td>
+      </tr>
+  </table>
+</div>
+<div class="button button2" id="C3" style="padding:10px; margin:10px;"onclick="clickA('C3','2')">
+    <table cellspaccing='0px' cellpadding='0px'>
+       <tr>
+            <td style="text-align:center; font-size:10px;">C3</td>
+      </tr>
+  </table>
+</div>
+<div class="button button2" id="C4" style="padding:10px; margin:10px;"onclick="clickA('C4','2')">
+    <table cellspaccing='0px' cellpadding='0px'>
+       <tr>
+            <td style="text-align:center; font-size:10px;">C4</td>
+      </tr>
+  </table>
+</div>
+<div class="button button2" id="C5" style="padding:10px; margin:10px;"onclick="clickA('C5','2')">
+    <table cellspaccing='0px' cellpadding='0px'>
+       <tr>
+            <td style="text-align:center; font-size:10px;">C5</td>
+      </tr>
+  </table>
+</div>
+<div class="button button2" id="C6" style="padding:10px; margin:10px;"onclick="clickA('C6','2')">
+    <table cellspaccing='0px' cellpadding='0px'>
+       <tr>
+            <td style="text-align:center; font-size:10px;">C6</td>
+      </tr>
+  </table>
+</div>
+<div class="button button1" id="C7" style="padding:10px; margin:10px;"onclick="clickA('C7','1')">
+    <table cellspaccing='0px' cellpadding='0px'>
+       <tr>
+            <td style="text-align:center; font-size:10px;">C7</td>
+      </tr>
+  </table>
+</div>
+<div class="button button1" id="C8" style="padding:10px; margin:10px;"onclick="clickA('C8','1')">
+    <table cellspaccing='0px' cellpadding='0px'>
+       <tr>
+            <td style="text-align:center; font-size:10px;">C8</td>
+      </tr>
+  </table>
+</div> 
+<br>
+<!--DDDD-->
+<div class="button button1" id="D1" style="padding:10px; margin:10px;"onclick="clickA('D1','1')">
+    <table cellspaccing='0px' cellpadding='0px'>
+       <tr>
+            <td style="text-align:center; font-size:10px;">D1</td>
+      </tr>
+  </table>
+</div>
+<div class="button button1" id="D2" style="padding:10px; margin:10px;"onclick="clickA('D2','1')">
+    <table cellspaccing='0px' cellpadding='0px'>
+       <tr>
+            <td style="text-align:center; font-size:10px;">D2</td>
+      </tr>
+  </table>
+</div>
+<div class="button button2" id="D3" style="padding:10px; margin:10px;"onclick="clickA('D3','2')">
+    <table cellspaccing='0px' cellpadding='0px'>
+       <tr>
+            <td style="text-align:center; font-size:10px;">D3</td>
+      </tr>
+  </table>
+</div>
+<div class="button button2" id="D4" style="padding:10px; margin:10px;"onclick="clickA('D4','2')">
+    <table cellspaccing='0px' cellpadding='0px'>
+       <tr>
+            <td style="text-align:center; font-size:10px;">D4</td>
+      </tr>
+  </table>
+</div>
+<div class="button button2" id="D5" style="padding:10px; margin:10px;"onclick="clickA('D5','2')">
+    <table cellspaccing='0px' cellpadding='0px'>
+       <tr>
+            <td style="text-align:center; font-size:10px;">D5</td>
+      </tr>
+  </table>
+</div>
+<div class="button button2" id="D6" style="padding:10px; margin:10px;"onclick="clickA('D6','2')">
+    <table cellspaccing='0px' cellpadding='0px'>
+       <tr>
+            <td style="text-align:center; font-size:10px;">D6</td>
+      </tr>
+  </table>
+</div>
+<div class="button button1" id="D7" style="padding:10px; margin:10px;"onclick="clickA('D7','1')">
+    <table cellspaccing='0px' cellpadding='0px'>
+       <tr>
+            <td style="text-align:center; font-size:10px;">D7</td>
+      </tr>
+  </table>
+</div>
+<div class="button button1" id="D8" style="padding:10px; margin:10px;"onclick="clickA('D8','1')">
+    <table cellspaccing='0px' cellpadding='0px'>
+       <tr>
+            <td style="text-align:center; font-size:10px;">D8</td>
+      </tr>
+  </table>
+</div> 
+<br>
+<!--EEEEE-->
+<div class="button button3" id="E1,E2" style="padding:10px; margin:10px; " onclick="clickA('E1,E2','3')">
+    <table style="width: 74px"   >
+       <tr>
+            <td style="text-align:center; font-size:10px;">E1-E2</td> 
+      </tr>
+  </table>
+</div>
+<div class="button button3" id="E3,E4" style="padding:10px; margin:10px;"onclick="clickA('E3,E4','3')">
+    <table style="width: 74px" >
+       <tr>
+            <td style="text-align:center; font-size:10px;">E3-E4</td>
+      </tr>
+  </table>
+</div>
+<div class="button button3" id="E5,E6" style="padding:10px; margin:10px;"onclick="clickA('E5,E6','3')">
+    <table style="width: 74px" >
+       <tr>
+            <td style="text-align:center; font-size:10px;">E5-E6</td>
+      </tr>
+  </table>
+</div>
+<div class="button button3" id="E7,E8" style="padding:10px; margin:10px;"onclick="clickA('E7,E8','3')">
+    <table style="width: 74px" >
+       <tr>
+            <td style="text-align:center; font-size:10px;">E7-E8</td>
+      </tr>
+  </table>
+</div>
+<br>
+<script>
+   var chair=[];
+    function clickA(namechair,typechair){
+          document.getElementById('setnamechair').value=namechair;
+          document.getElementById('settypechair').value=typechair;
+        if(document.getElementById(namechair).style.backgroundColor == "brown"){
+          alert("Không đặt được ghế này!")
+        }else{
+          var i = chair.indexOf(namechair);
+          if(i == -1){
+              document.getElementById(namechair).style.backgroundColor = "#4CAF50";
+              chair.push(namechair);
+          }else{
+              chair.splice(i, 1) 
+              document.getElementById(namechair).style.backgroundColor = null;   
+          }
+        }  
+    }
+    window.onload = function(){
+        var ListChair = <%- JSON.stringify(namechair) %>;
+        ListChair.forEach(function(item){
+          if(item.namechair=='A1'){
+            document.getElementById('A1').style.backgroundColor = "brown";
+          }
+          if(item.namechair=='A2'){
+            document.getElementById('A2').style.backgroundColor = "brown";
+          }
+          if(item.namechair=='A3'){
+            document.getElementById('A3').style.backgroundColor = "brown";
+          }
+          if(item.namechair=='A4'){
+            document.getElementById('A4').style.backgroundColor = "brown";
+          }
+          if(item.namechair=='A5'){
+            document.getElementById('A5').style.backgroundColor = "brown";
+          }
+          if(item.namechair=='A6'){
+            document.getElementById('A6').style.backgroundColor = "brown";
+          }
+          if(item.namechair=='A7'){
+            document.getElementById('A7').style.backgroundColor = "brown";
+          }
+          if(item.namechair=='A8'){
+            document.getElementById('A8').style.backgroundColor = "brown";
+          }
+          if(item.namechair=='B1'){
+            document.getElementById('B1').style.backgroundColor = "brown";
+          }
+          if(item.namechair=='B2'){
+            document.getElementById('B2').style.backgroundColor = "brown";
+          }
+          if(item.namechair=='B3'){
+            document.getElementById('B3').style.backgroundColor = "brown";
+          }
+          if(item.namechair=='B4'){
+            document.getElementById('B4').style.backgroundColor = "brown";
+          }
+          if(item.namechair=='B5'){
+            document.getElementById('B5').style.backgroundColor = "brown";
+          }
+          if(item.namechair=='B6'){
+            document.getElementById('B6').style.backgroundColor = "brown";
+          }
+          if(item.namechair=='B7'){
+            document.getElementById('B7').style.backgroundColor = "brown";
+          }
+          if(item.namechair=='B8'){
+            document.getElementById('B8').style.backgroundColor = "brown";
+          }
+           if(item.namechair=='C1'){
+            document.getElementById('C1').style.backgroundColor = "brown";
+          }
+          if(item.namechair=='C2'){
+            document.getElementById('C2').style.backgroundColor = "brown";
+          }
+          if(item.namechair=='C3'){
+            document.getElementById('C3').style.backgroundColor = "brown";
+          }
+          if(item.namechair=='C4'){
+            document.getElementById('C4').style.backgroundColor = "brown";
+          }
+          if(item.namechair=='C5'){
+            document.getElementById('C5').style.backgroundColor = "brown";
+          }
+          if(item.namechair=='C6'){
+            document.getElementById('C6').style.backgroundColor = "brown";
+          }
+          if(item.namechair=='C7'){
+            document.getElementById('C7').style.backgroundColor = "brown";
+          }
+          if(item.namechair=='C8'){
+            document.getElementById('C8').style.backgroundColor = "brown";
+          }
+           if(item.namechair=='D1'){
+            document.getElementById('D1').style.backgroundColor = "brown";
+          }
+          if(item.namechair=='D2'){
+            document.getElementById('D2').style.backgroundColor = "brown";
+          }
+          if(item.namechair=='D3'){
+            document.getElementById('D3').style.backgroundColor = "brown";
+          }
+          if(item.namechair=='D4'){
+            document.getElementById('D4').style.backgroundColor = "brown";
+          }
+          if(item.namechair=='D5'){
+            document.getElementById('D5').style.backgroundColor = "brown";
+          }
+          if(item.namechair=='D6'){
+            document.getElementById('D6').style.backgroundColor = "brown";
+          }
+          if(item.namechair=='D7'){
+            document.getElementById('D7').style.backgroundColor = "brown";
+          }
+          if(item.namechair=='D8'){
+            document.getElementById('D8').style.backgroundColor = "brown";
+          }
+           if(item.namechair=='E1' || item.namechair=='E2'){
+            document.getElementById('E1,E2').style.backgroundColor = "brown";
+          }
+          
+          if(item.namechair=='E3' || item.namechair=='E4'){
+            document.getElementById('E3,E4').style.backgroundColor = "brown";
+          }
+          if(item.namechair=='E5' || item.namechair=='E6'){
+            document.getElementById('E5,E6').style.backgroundColor = "brown";
+          }
+          
+          if(item.namechair=='E7' || item.namechair=='E8'){
+            document.getElementById('E7,E8').style.backgroundColor = "brown";
+          }
+        });
+    }
+
+  </script>
+<form role="form" method="post" action="/ticketinfosave">
+    
+            <input type="hidden" name="listChair" id="listChair" value="">
+            <input type="hidden" name="setday" id="setday" value="<%=showday%>">
+            <input type="hidden" name="setidmovie" id="setidmovie" value="<%=idmovie%>">
+            <input type="hidden" name="settime" id="settime" value="<%=time%>">
+            <input type="hidden" name="setroom" id="setroom" value="<%=idroom%>">
+            <input type="hidden" name="setschedule" id="setschedule" value="<%=idschedule%>">
+            <input type="hidden" name="setnamechair" id="setnamechair" value="">
+            <input type="hidden" name="settypechair" id="settypechair" value="">
+
+            <input  name="" type="submit" style="width: 47%" class="btn btn-lg btn-primary btn-block"  value="Đặt Ghế" onclick=" return data()">
+</form>
+<script>
+  function data(){
+    document.getElementById("listChair").value = chair;
+    return true;
+  }
+</script>
+<div class="button button3"  style="padding:10px; margin:10px;">
+        <table style="width: 74px" >
+          <tr>
+            <td style="text-align:center; font-size:10px;">Ghế đôi</td>
+        </tr>
+      </table>
+      
+    </div>
+    <div class="button button1"  style="padding:10px; margin:10px;">
+        <table style="width: 74px" >
+          <tr>
+            <td style="text-align:center; font-size:10px;">Ghế thường</td>
+        </tr>
+      </table>
+      
+    </div>
+    <div class="button button2"  style="padding:10px; margin:10px;">
+        <table style="width: 74px" >
+          <tr>
+            <td style="text-align:center; font-size:10px;">Ghế Ghế vip</td>
+        </tr>
+      </table>
+      
+    </div>
+    <div class="button button4"  style="padding:10px; margin:10px;">
+        <table style="width: 74px" >
+          <tr>
+            <td style="text-align:center; font-size:10px;">Ghế đã đặt</td>
+        </tr>
+      </table>
+      
+    </div>
+</div>
+</div>
+</div>
+<% include admin_footer %>
