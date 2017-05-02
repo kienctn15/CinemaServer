@@ -3,7 +3,11 @@
 <div id="wrapper">
 <% include admin_menu %>
     <div id="page-wrapper">
-
+<script type="text/javascript">
+    $(function() {
+    $( "#showday" ).datepicker({  minDate: new Date() });
+  });
+</script>
     
                     <!-- <div class="container" id="simpleSearchDiv">
                         <div class="alert alert-success alert-dismissable"  style="text-align: center; width: 85%">
@@ -29,8 +33,6 @@
                                         <td>Tên phim</td>
                                         <td>Ảnh</td>
                                         <td>Thời lượng</td>
-                                        <td>Đạo diễn</td>
-                                        <td>Diễn viên</td>
                                         <td>Ngôn ngữ</td>
                                         <td>Ngày khởi chiếu</td>
                                         <td>Định dạng</td>
@@ -47,8 +49,6 @@
                                             <input type="hidden" id="description-<%=item.idmovie%>" value="<%=item.description%>"></td>
                                         <td><input type="hidden" id="image-<%= item.idmovie %>" value="<%= item.image %>"> <img src="<%= item.image %>" height="50px" width="50px"></td>
                                         <td><input type="hidden" id="duration-<%=item.idmovie%>" value="<%= item.duration %>"><%= item.duration %> Phút</td>
-                                        <td><input type="hidden" id="director-<%=item.idmovie%>" value="<%= item.director %>"><%= item.director %></td>
-                                        <td><input type="hidden" id="actornactress-<%=item.idmovie%>" value="<%= item.actornactress %>"><%= item.actornactress %></td>
                                         <td><input type="hidden" id="language-<%=item.idmovie%>" value="<%= item.language %>"><%= item.language %>
                                             <input type="hidden" id="nation-<%=item.idmovie%>" value="<%= item.nation %>"></td>
                                         <td><input type="hidden" id="startday-<%=item.idmovie%>" value="<%= item.startday %>"><%= item.startday %></td>

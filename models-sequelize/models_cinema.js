@@ -418,7 +418,7 @@ else{
         movie.updateAttributes({
             idmovie: idmovie,
             name:name,
-            description:description,
+            description:"",
             imdb:imdb,
             duration:duration,
             director:director,

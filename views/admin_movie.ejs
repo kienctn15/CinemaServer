@@ -24,13 +24,9 @@
                                         <td>Ảnh</td>
                                         <td>IMDB</td>
                                         <td>Thời lượng</td>
-                                        <td>Đạo diễn</td>
-                                        <td>Diễn viên</td>
                                         <td>Ngôn ngữ</td>
                                         <td>Ngày khởi chiếu</td>
                                         <td>Định dạng</td>
-                                        <td>Lứa tuổi</td>
-                                        <td>Thể loại</td>
                                         <td>Trạng thái</td>
                                         <td>Thao tác</td>
                                     </tr>
@@ -44,8 +40,6 @@
                                         <td><input type="hidden" id="image-<%= item.idmovie %>" value="<%= item.image %>"> <img src="<%= item.image %>" height="50px" width="50px"></td>
                                         <td><input type="hidden" id="imdb-<%=item.idmovie%>" value="<%= item.imdb %>"><%= item.imdb %></td>
                                         <td><input type="hidden" id="duration-<%=item.idmovie%>" value="<%= item.duration %>"><%= item.duration %> Phút</td>
-                                        <td><input type="hidden" id="director-<%=item.idmovie%>" value="<%= item.director %>"><%= item.director %></td>
-                                        <td><input type="hidden" id="actornactress-<%=item.idmovie%>" value="<%= item.actornactress %>"><%= item.actornactress %></td>
                                         <td><input type="hidden" id="language-<%=item.idmovie%>" value="<%= item.language %>"><%= item.language %>
                                             <input type="hidden" id="nation-<%=item.idmovie%>" value="<%= item.nation %>"></td>
                                         <td><input type="hidden" id="startday-<%=item.idmovie%>" value="<%= item.startday %>"><%= item.startday %></td>
@@ -56,7 +50,7 @@
                                                 3D
                                             <%}%>
                                         </td>
-                                        <td><input type="hidden" id="urltrailer-<%=item.idmovie%>" value="<%= item.urltrailer %>">
+                                        <!-- <td><input type="hidden" id="urltrailer-<%=item.idmovie%>" value="<%= item.urltrailer %>">
                                             <input type="hidden" id="ages-<%=item.idmovie%>" value="<%=item.ages%>">
                                             <%if(item.ages=='1'){%>
                                                 P
@@ -68,7 +62,7 @@
                                                 C18
                                             <%}%>
                                         </td>
-                                        <td><input type="hidden" id="category-<%=item.idmovie%>" value="<%=item.category%>"><%=item.category%></td>
+                                        <td><input type="hidden" id="category-<%=item.idmovie%>" value="<%=item.category%>"><%=item.category%></td> -->
                                         <td><input type="hidden" id="content-<%=item.idmovie%>" value="<%=item.content%>">
                                           <input type="hidden" id="status-<%=item.idmovie%>" value="<%=item.status%>">
                                             <%if(item.status=='1'){%>
@@ -91,6 +85,7 @@
                             </table>
                             <!-- /.table-responsive -->  
                             <script >
+      
                             function Confirm_del(){
                                         var result = confirm('Bạn chắc chắn muốn xóa?');
                                         return result;
@@ -181,7 +176,9 @@
                                         document.getElementById('format').focus();
                                         return false;
                                     }
-                                     if(document.getElementById('urltrailer').value==''){
+
+                                    alert(learnRegExp(document.getElementById('urltrailer').value));
+                                    if(document.getElementById('urltrailer').value ==''){
                                         alert('Không được để trống link trailer');
                                         document.getElementById('urltrailer').focus();
                                         return false;
@@ -220,15 +217,8 @@
                                                 <div class="cols-sm-10">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><i class="fa fa-bookmark fa-lg" aria-hidden="true"></i></span>
-                                                        <input type="text" class="form-control" name="namefilm" id="namefilm"  placeholder="Nhập vào tên phim"/>
+                                                        <input type="text" class="form-control" name="namefilm" id="namefilm" maxlength="100" placeholder="Nhập vào tên phim"/>
                                                     </div>
-                                                </div>
-                                            </div>
-                                            
-                                            <div class="form-group">
-                                                <label for="name" class="cols-sm-2 control-label">Mô tả*</label>
-                                                <div class="cols-sm-10">
-                                                <textarea class="form-control" name="description" id="description" rows="3"></textarea>
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -236,7 +226,7 @@
                                                 <div class="cols-sm-10">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><i class="fa fa-tachometer fa-lg" aria-hidden="true"></i></span>
-                                                        <input type="text" class="form-control" name="imdb" id="imdb"  placeholder="Nhập vào chỉ số imdb"/>
+                                                        <input type="number" step="0.01" class="form-control" name="imdb" min="0.00" max="10.00" id="imdb"  placeholder="Nhập vào chỉ số imdb"/>
                                                     </div>
                                                 </div>
                                             </div>
@@ -261,7 +251,7 @@
                                                 <div class="cols-sm-10">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><i class="fa fa-tachometer fa-lg" aria-hidden="true"></i></span>
-                                                        <input type="number" class="form-control" name="duration" id="duration"  placeholder="Nhập vào thời lượng phim"/>
+                                                        <input type="number"  step="1" min="15" max="300" class="form-control" name="duration" id="duration"  placeholder="Nhập vào thời lượng phim"/>
                                                     </div>
                                                 </div>
                                             </div>
@@ -271,7 +261,7 @@
                                                 <div class="cols-sm-10">                                                    
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><i class="fa fa-male fa-lg" aria-hidden="true"></i></span>
-                                                        <input type="text" class="form-control" name="director" id="director"  placeholder="Nhập vào tên đạo diễn phim"/>
+                                                        <input type="text" maxlength="30" class="form-control" name="director" id="director"  placeholder="Nhập vào tên đạo diễn phim"/>
                                                     </div>
                                                 </div>
                                             </div>
@@ -280,7 +270,7 @@
                                                 <div class="cols-sm-10">                                                    
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><i class="fa fa-male fa-lg" aria-hidden="true"></i></span>
-                                                        <input type="text" class="form-control" name="actornactress" id="actornactress"  placeholder="Nguyễn Văn A , Nguyễn Văn B"/>
+                                                        <input type="text" maxlength="50" class="form-control" name="actornactress" id="actornactress"  placeholder="Nguyễn Văn A , Nguyễn Văn B"/>
                                                     </div>
                                                 </div>
                                             </div>
@@ -288,8 +278,22 @@
                                                 <label for="name" class="cols-sm-2 control-label">Ngôn ngữ*</label>
                                                 <div class="cols-sm-10">
                                                     <div class="input-group">
-                                                        <span class="input-group-addon"><i class="fa fa-sign-language fa-lg" aria-hidden="true"></i></span>
-                                                        <input type="text" class="form-control" name="language" id="language"  placeholder="Nhập vào ngôn ngữ phim"/>
+                                                        <span class="input-group-addon"><i class="fa fa-suitcase fa-lg" aria-hidden="true"></i></span>
+                                                        <select class="form-control" name="language" id="language">
+                                                                <option value="Tiếng Việt">Tiếng Việt</option>
+                                                                <option value="Tiếng Anh">Tiếng Anh</option>
+                                                                <option value="Tiếng Ấn Độ">Tiếng Ấn Độ</option>
+                                                                <option value="Tiếng Đức">Tiếng Đức</option>
+                                                                <option value="Tiếng Hàn">Tiếng Hàn</option>
+                                                                <option value="Tiếng Italia">Tiếng Italia</option>
+                                                                <option value="Tiếng Latin">Tiếng Latin</option>
+                                                                <option value="Tiếng Nga">Tiếng Nga</option>
+                                                                <option value="Tiếng Nhật">Tiếng Nhật</option>
+                                                                <option value="Tiếng Pháp">Tiếng Pháp</option>
+                                                                <option value="Tiếng Thái">Tiếng Thái</option>
+                                                                <option value="Tiếng Trung">Tiếng Trung</option>
+                                                                
+                                                         </select>
                                                     </div>
                                                 </div>
                                                 </div>
@@ -298,7 +302,22 @@
                                                 <div class="cols-sm-10">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><i class="fa fa-circle-o fa-lg" aria-hidden="true"></i></span>
-                                                        <input type="text" class="form-control" name="nation" id="nation"  placeholder="Nhập vào tên quốc gia"/>
+                                                        <select class="form-control" name="nation" id="nation">
+                                                                <option value="Việt Nam">Việt Nam</option>
+                                                                <option value="Anh">Anh</option>
+                                                                <option value="Ấn Độ">Ấn Độ</option>
+                                                                <option value="Canada">Canada</option>
+                                                                <option value="Đức">Đức</option>
+                                                                <option value="Hàn Quốc">Hàn Quốc</option>
+                                                                <option value="Italia">Italia</option>
+                                                                <option value="Mỹ">Mỹ</option>
+                                                                <option value="Nga">Nga</option>
+                                                                <option value="Nhật Bản">Nhật Bản</option>
+                                                                <option value="Pháp">Pháp</option>
+                                                                <option value="Tây Ban Nha">Tây Ban Nha</option>
+                                                                <option value="Thái Lan">Thái Lan</option>
+                                                                <option value="Trung Quốc">Trung Quốc</option> 
+                                                         </select>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
@@ -306,7 +325,8 @@
                                                 <div class="cols-sm-10">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><i class="fa fa-hourglass-start fa-lg" aria-hidden="true"></i></span>
-                                                        <input type="date" class="form-control" name="startday" id="startday"  placeholder="ngày tháng năm"/>
+                                                        <input type="date" class="form-control" name="startday" id="startday"
+                                                        max="2050-12-31" min="2017-04-27" placeholder="ngày tháng năm"/>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
@@ -326,7 +346,7 @@
                                                 <div class="cols-sm-10">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><i class="fa fa-video-camera fa-lg" aria-hidden="true"></i></span>
-                                                        <input type="text" class="form-control" name="urltrailer" id="urltrailer"  placeholder="nhập vào link trailer phim"/>
+                                                        <input type="link" class="form-control" name="urltrailer" id="urltrailer"  placeholder="nhập vào link trailer phim"/>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
@@ -336,10 +356,10 @@
                                                         <span class="input-group-addon"><i class="fa fa-dot-circle-o fa-lg" aria-hidden="true"></i></span>
                                                         <select class="form-control" name="ages" id="ages"> 
                                                             <option value="0">--Chọn--</option>
-                                                            <option value="1">P</option>
-                                                            <option value="2">C13</option>
-                                                            <option value="3">C16</option>
-                                                            <option value="4">C18</option>
+                                                            <option value="1">P - Phù hợp mọi lứa tuổi</option>
+                                                            <option value="2">C13 - Dành cho khán giả trên 13 tuổi</option>
+                                                            <option value="3">C16 - Dành cho khán giả trên 16 tuổi</option>
+                                                            <option value="4">C18 - Dành cho khán giả trên 18 tuổi</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -348,7 +368,7 @@
                                                 <div class="cols-sm-10">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><i class="fa fa-file-o fa-lg" aria-hidden="true"></i></span>
-                                                        <input type="text" class="form-control" name="category" id="category"  placeholder="hành động , tình cảm "/>
+                                                        <input type="text" class="form-control" name="category" id="category"  placeholder="hành động, tình cảm "/>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
@@ -365,7 +385,7 @@
                                                             <option value="0">--Chọn--</option>
                                                             <option value="1">Đang chiếu</option>
                                                             <option value="2">Sắp chiếu</option>
-                                                            <option value="2">Ngừng chiếu</option>
+                                                            <option value="3">Ngừng chiếu</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -375,10 +395,10 @@
                                                 <table style="width: 100%;">
                                                 <tbody><tr>
                                                     <td style="text-align: left;padding: 10px">
-                                                        <button type="submit" id="btn_ok" class="btn btn-primary btn-lg btn-block login-button"onclick="return checkData()">OK</button>
+                                                        <button type="submit" id="btn_ok" class="btn btn-primary btn-lg btn-block login-button"onclick="return checkData()">Nhập</button>
                                                     </td>
                                                     <td style="text-align: right;">
-                                                        <button type="reset" id="btn_re" class="btn btn-primary btn-lg btn-block login-button" onclick="return Reset()">Reset</button>
+                                                        <button type="reset" id="btn_re" class="btn btn-primary btn-lg btn-block login-button" onclick="return Reset()">Hủy</button>
                                                     </td>
                                                 </tr></tbody>
                                             </table>

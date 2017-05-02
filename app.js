@@ -288,10 +288,11 @@ io.sockets.on('connection', function(socket) {
       Models.findByUsernameSignUp1(jsonObject.user,function(result){
         if(result){
           Models.customer_signup_android(jsonObject.user,jsonObject.pass,jsonObject.email,jsonObject.phone,jsonObject.fullname,jsonObject.passport,jsonObject.address,function(result1){
-            socket.emit('result_signup',{result1:result1});
+            socket.emit('result_signup',{result1:result1, flag: 1});
           });
         }else{
-          socket.emit('result_signup',{result1:result1});
+          console.log("tai khoan da ton tai!");
+          socket.emit('result_signup',{flag: 0});
         }
       });
     });

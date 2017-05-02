@@ -6,7 +6,7 @@
     <center>
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Quản lý khách hàng</h1>
+                    <h1 class="page-header">Quản lý người dùng</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -137,7 +137,7 @@
                                                     
                                                 }
                                             if(document.getElementById('identitycard').value==''){
-                                                    alert('Không được để trống CMTND!');
+                                                    alert('Không được để trống CMTND/Hộ Chiếu!');
                                                    document.getElementById('identitycard').focus();
                                                     return false; 
                                                     
@@ -167,7 +167,7 @@
                                                 <div class="cols-sm-10">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><i class="fa fa-bookmark fa-lg" aria-hidden="true"></i></span>
-                                                        <input type="text" class="form-control" name="fullname" id="fullname"  placeholder="Nhập vào họ và tên"/>
+                                                        <input type="text" maxlength="30" class="form-control" name="fullname" id="fullname"  placeholder="Nhập vào họ và tên"/>
                                                     </div>
                                                 </div>
                                             </div>
@@ -187,7 +187,7 @@
                                                 <div class="cols-sm-10">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><i class="fa fa-user fa-lg" aria-hidden="true"></i></span>
-                                                        <input type="text" class="form-control" name="username" id="username"  placeholder="Nhập vào tên tài khoản"/>
+                                                        <input type="text" class="form-control" maxlength="32" name="username" id="username"  placeholder="Nhập vào tên tài khoản"/>
                                                     </div>
                                                 </div>
                                             </div>
@@ -196,7 +196,7 @@
                                                 <div class="cols-sm-10">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><i class="fa fa-eyedropper fa-lg" aria-hidden="true"></i></span>
-                                                        <input type="password" class="form-control" name="password" id="password"  placeholder="Nhập vào mật khẩu"/>
+                                                        <input type="password" class="form-control" maxlength="32" minlength="5" name="password" id="password"  placeholder="Nhập vào mật khẩu"/>
                                                     </div>
                                                 </div>
                                             </div>
@@ -206,7 +206,7 @@
                                                 <div class="cols-sm-10">                                                    
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><i class="fa fa-birthday-cake fa-lg" aria-hidden="true"></i></span>
-                                                        <input type="date" class="form-control" name="birthday" id="birthday"  placeholder="mm dd yy"/>
+                                                        <input type="date" max="2050-12-31" min="1900-01-01" class="form-control" name="birthday" id="birthday"  placeholder="mm dd yy"/>
                                                     </div>
                                                 </div>
                                             </div>
@@ -228,7 +228,7 @@
                                                 <div class="cols-sm-10">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><i class="fa fa-credit-card fa-lg" aria-hidden="true"></i></span>
-                                                        <input type="text" class="form-control" name="identitycard" id="identitycard"  placeholder="Nhập vào CMTND"/>
+                                                        <input type="text" class="form-control" maxlength="12" onkeypress='return event.charCode >= 48 && event.charCode <= 57' name="identitycard" id="identitycard"  placeholder="Nhập vào CMTND"/>
                                                     </div>
                                                 </div>
                                                 </div>
@@ -237,7 +237,7 @@
                                                 <div class="cols-sm-10">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><i class="fa fa-mobile-phone fa-lg" aria-hidden="true"></i></span>
-                                                        <input type="text" class="form-control" name="phone" id="phone"  placeholder="Nhập vào số điện thoại"/>
+                                                        <input type="text" minlength="9" maxlength="11" onkeypress='return event.charCode >= 48 && event.charCode <= 57' class="form-control" name="phone" id="phone"  placeholder="Nhập vào số điện thoại"/>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
@@ -258,10 +258,10 @@
                                                 <table style="width: 100%;">
                                                 <tbody><tr>
                                                     <td style="text-align: left;padding: 10px">
-                                                        <button type="submit" id="btn_ok" class="btn btn-primary btn-lg btn-block login-button"onclick="return checkUser()">OK</button>
+                                                        <button type="submit" id="btn_ok" class="btn btn-primary btn-lg btn-block login-button"onclick="return checkUser()">Hoàn tất</button>
                                                     </td>
                                                     <td style="text-align: right;">
-                                                        <button type="reset" id="btn_re" class="btn btn-primary btn-lg btn-block login-button" onclick="return Reset()">Reset</button>
+                                                        <button type="reset" id="btn_re" class="btn btn-primary btn-lg btn-block login-button" onclick="return Reset()">Làm lại</button>
                                                     </td>
                                                 </tr></tbody>
                                             </table>
