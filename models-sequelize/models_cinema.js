@@ -523,8 +523,16 @@ exports.getAllSchedule = function(callback) {
     {
        bb=b;
     }
+    if(a<10){
+        aa='0'+a;
+    }
+    else
+    {
+       aa=a;
+    }
     var c=datetime.getFullYear();
-    var full=c+'-'+bb+'-'+a;
+    var full=c+'-'+bb+'-'+aa;
+
     Schedule.findAll({where:{showday:{$gte:full}},
          include: [{
             model: Movie
