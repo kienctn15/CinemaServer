@@ -24,7 +24,7 @@
                                         <td>Ngày chiếu</td>
                                         <td>Thời gian chiếu</td>
                                         <td>Giá vé</td>
-                                        <td>Trạng thái</td>
+                                        <!-- <td>Trạng thái</td> -->
                                         <td>Thao tác</td>
                                     </tr>
                                 </thead>
@@ -69,11 +69,11 @@
                                             <%}%>
                                         </td>
                                             <td><input type="hidden" id="price-<%=item.idticketinfo%>" value="<%=item.price%>"><%=item.price%></td>
-                                            <td><input type="hidden" id="status-<%=item.idschedule%>" value="<%=item.status%>">
+                                            <!-- <td><input type="hidden" id="status-<%=item.idschedule%>" value="<%=item.status%>">
                                             <%if(item.status=='1'){%>
                                                 Chưa in vé
                                             <%}%>
-                                        </td> 
+                                        </td>  -->
                                             <td><a href="UpdatePrint/?id=<%=item.idticketinfo%>"><button class="fa fa-print" title="In"onclick="printdiv('print','<%=item.idticketinfo%>')" data-dismiss="modal"></button></a></td>
                                         </tr>
                                     <%})%>

@@ -14,18 +14,22 @@ exports.Insert=function(req,res,next){
 			res.redirect('/quan-ly-tao-lich-chieu');
 		}
 		else{
-
-			model.createSchedule(req.body.showday,req.body.time,req.body.roomschedure,req.body.idfilm,function(err){
-					if(err){
-						res.redirect('/quan-ly-tao-lich-chieu');
-							}
-					else{
-						res.redirect('/quan-ly-tao-lich-chieu');
-						}
+			model.getOneSchedule06(req.body.showday,req.body.time,function(getoneschedule){
+				if(getoneschedule){
+					res.redirect('/quan-ly-tao-lich-chieu');
+				}else{
+					model.createSchedule(req.body.showday,req.body.time,req.body.roomschedure,req.body.idfilm,function(err){
+						if(err){
+							res.redirect('/quan-ly-tao-lich-chieu');
+							}else{
+								res.redirect('/quan-ly-tao-lich-chieu');
+									}
+						});
+				}
 			});
 		}
 	});
-	}
+}
 exports.Viewschedule=function(req,res,next){
 	model.getAllSchedule(function(schedules){
 		 res.render('admin_listschedule',{schedules:schedules,user:req.user});	

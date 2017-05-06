@@ -78,6 +78,9 @@
             socket.on('createticketinfofail',function(){
                 alert("Đặt vé thất bại");
             });
+            socket.on('checkOccupiedSeat06fail',function(){
+                alert("Có vé bị đặt trước đó, bạn không thể đặt!");
+            });
             socket.on('updatestatus',function(){
                 alert("In vé thành công");
             });
@@ -86,6 +89,9 @@
             });
             socket.on('schedulefail',function(){
                 alert("Lịch chiếu đã tồn tại");
+            });
+            socket.on('schedulefail06',function(){
+                alert("Không được chiếu 1 phim tại 2 phòng trong cùng một khung giờ!");
             });
             socket.on('chairfail',function(){
                 alert("Ghế đã được đặt");

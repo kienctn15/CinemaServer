@@ -572,6 +572,18 @@ exports.getOneSchedule=function(showday,time,idroom,callback){
         }
     });
 }
+exports.getOneSchedule06=function(showday,time,callback){
+    Schedule.find({ where:{ showday: showday,time:time}}).then(function (oneschedule){ 
+        if(!oneschedule){
+            callback(false);
+        }
+        else{
+            exports.emitter.emit('schedulefail06');
+            callback(true);
+        }
+    });
+}
+
 module.exports.createSchedule = function(showday,time,idroom,idmovie,callback) {
     Schedule.create({
         idschedule: '',
@@ -633,10 +645,32 @@ module.exports.createTicketInfo = function(date,timeframe,typeofseat,namechair,i
         exports.emitter.emit('createticketinfo');
         callback();
     }).error(function(err) {
-        exports.emitter.emit('createticketinfo');
+        exports.emitter.emit('createticketinfofail');
         callback(err);
     });
 }
+
+module.exports.checkOccupiedSeat06 = function(date,timeframe,typeofseat,namechair,idroom,callback) {
+    TicketInfo.find({where: {$and: {
+        date:date,
+        timeframe:timeframe,
+        typeofseat:typeofseat,
+        namechair:namechair,
+        idroom:idroom
+    }}}).then(function(ticketinfos) 
+    {
+        if(!ticketinfos) {
+            //console.log("false-------------------");
+            //exports.emitter.emit('checkOccupiedSeat06'); //cái này c dùng mục đích làm gì?
+            callback(false, {namechair: namechair});
+        } else {
+            //console.log("true-------------------");
+            //exports.emitter.emit('checkOccupiedSeat06fail');
+            callback(true, null);
+        }
+    });
+}
+
 
 module.exports.getTicketInfo=function(callback){
     var ticketinfoList = []; 

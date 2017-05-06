@@ -102,7 +102,7 @@ app.post('/Schedulesave',Staffs.ensureAuthenticated,Schedule.Insert);
 app.post('/Scheduleupdate',Staffs.ensureAuthenticated,Schedule.Update);
 app.use('/deleteschedule',Staffs.ensureAuthenticated,Schedule.Delete);
 app.use('/set',Staffs.ensureAuthenticated,Home.ViewDaySchedule);
-app.post('/ticketinfosave',Staffs.ensureAuthenticated,Home.InsertTicketinfo);
+app.post('/ticketinfosave', Staffs.ensureAuthenticated, Home.InsertTicketinfo);
 app.use('/updatePrint',Staffs.ensureAuthenticated,TicketInfo.UpdatePrint);
 
 // catch 404 and forward to error handler
@@ -169,7 +169,10 @@ io.sockets.on('connection', function(socket) {
   Models.emitter.on('createticketinfo',function(){
     socket.emit('createticketinfo');
   });
-  Models.emitter.on('createticketinfoffail',function(){
+  Models.emitter.on('checkOccupiedSeat06fail',function(){
+    socket.emit('checkOccupiedSeat06fail');
+  });
+  Models.emitter.on('createticketinfofail',function(){
     socket.emit('createticketinfofail');
   });
   Models.emitter.on('updatestatus',function(){
@@ -180,6 +183,9 @@ io.sockets.on('connection', function(socket) {
   });
   Models.emitter.on('schedulefail',function(){
     socket.emit('schedulefail');
+  });
+  Models.emitter.on('schedulefail06',function(){
+    socket.emit('schedulefail06');
   });
   Models.emitter.on('chairfail',function(){
     socket.emit('chairfail');

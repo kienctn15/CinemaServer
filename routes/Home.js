@@ -25,6 +25,7 @@ exports.Viewchair=function(req,res,next){
 	
 	
 }
+
 var week;
 exports.ViewDaySchedule=function(req,res,next){
 	console.log(req.query.day);
@@ -33,6 +34,7 @@ exports.ViewDaySchedule=function(req,res,next){
 		res.render('admin_home',{dayschedule:dayschedule, user:req.user});
 	})
 }
+
 exports.InsertTicketinfo=function(req,res,next){
 	var time;
 	var typeday;
@@ -56,18 +58,26 @@ exports.InsertTicketinfo=function(req,res,next){
 	console.log(req.body.setday);
 	console.log(req.body.settypechair);
 
-	    model.readMovie(req.body.setidmovie,function(movie){
-		model.getOneTicketPrice(movie.format,time,typeday,req.body.settypechair,function(ticket){
-			var str = req.body.listChair;
-			var arr = str.split(",");
-			for(var i=0;i<arr.length;i++) {
-					model.createTicketInfo(req.body.setday,req.body.settime,req.body.settypechair,arr[i],req.body.setroom,'-1',req.body.setidmovie,ticket.price,function(ticketinfo){
-						res.redirect('/quan-ly-in-ve');
+
+				model.readMovie(req.body.setidmovie,function(movie){
+					model.getOneTicketPrice(movie.format, time,typeday, req.body.settypechair, function(ticket){
+							var str = req.body.listChair;
+							var arr = str.split(",");
+							for(var i=0; i<arr.length; i++) {
+								model.checkOccupiedSeat06(req.body.setday, req.body.settime, req.body.settypechair, arr[i], req.body.setroom, function(result, nameChair){
+									if(!result){
+										model.createTicketInfo(req.body.setday, req.body.settime, req.body.settypechair, nameChair.namechair, req.body.setroom,'-1',req.body.setidmovie,ticket.price,function(ticketinfo){
+											res.redirect('/quan-ly-in-ve');
+										});
+									}else{
+										console.log("Dat roi!----------------------------");
+										res.redirect('/admin');
+									}
+								});
+							}							
 					});
-			}
-				
-		});							
-		});
+			
+				});
 }
 
 		
